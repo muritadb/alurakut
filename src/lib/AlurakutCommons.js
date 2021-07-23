@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled, { css } from 'styled-components';
-import NextLink from 'next/link';
+import  NextLink from 'next/link';
+import { useRouter } from 'next/router';
+
 
 const BASE_URL = 'http://alurakut.vercel.app/';
 const v = '1';
+
 
 
 function Link({ href, children, ...props }) {
@@ -21,6 +24,8 @@ function Link({ href, children, ...props }) {
 // ================================================================================================================
 export function AlurakutMenu({ githubUser }) {
     const [isMenuOpen, setMenuState] = React.useState(false);
+    const router = useRouter();
+
     return (
         <AlurakutMenu.Wrapper isMenuOpen={isMenuOpen}>
             <div className="container">
@@ -35,7 +40,9 @@ export function AlurakutMenu({ githubUser }) {
                 </nav>
 
                 <nav>
-                    <a href={`/logout`}>
+                    <a onClick={() => {
+                      router.push("/login");
+                    }} >
                         Sair
                     </a>
                     <div>
